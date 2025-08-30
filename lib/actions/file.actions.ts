@@ -45,7 +45,7 @@ export const uploadFile = async ({
     const newFile = await databases
       .createDocument(
         appwriteConfig.databaseId,
-        appwriteConfig.filesCollectionId,
+        appwriteConfig.filesTableId,
         ID.unique(),
         fileDocument,
       )
@@ -107,7 +107,7 @@ export const getFiles = async ({
 
     const files = await databases.listDocuments(
       appwriteConfig.databaseId,
-      appwriteConfig.filesCollectionId,
+      appwriteConfig.filesTableId,
       queries,
     );
 
@@ -130,7 +130,7 @@ export const renameFile = async ({
     const newName = `${name}.${extension}`;
     const updatedFile = await databases.updateDocument(
       appwriteConfig.databaseId,
-      appwriteConfig.filesCollectionId,
+      appwriteConfig.filesTableId,
       fileId,
       {
         name: newName,
@@ -154,7 +154,7 @@ export const updateFileUsers = async ({
   try {
     const updatedFile = await databases.updateDocument(
       appwriteConfig.databaseId,
-      appwriteConfig.filesCollectionId,
+      appwriteConfig.filesTableId,
       fileId,
       {
         users: emails,
@@ -178,7 +178,7 @@ export const deleteFile = async ({
   try {
     const deletedFile = await databases.deleteDocument(
       appwriteConfig.databaseId,
-      appwriteConfig.filesCollectionId,
+      appwriteConfig.filesTableId,
       fileId,
     );
 
@@ -202,7 +202,7 @@ export async function getTotalSpaceUsed() {
 
     const files = await databases.listDocuments(
       appwriteConfig.databaseId,
-      appwriteConfig.filesCollectionId,
+      appwriteConfig.filesTableId,
       [Query.equal("owner", [currentUser.$id])],
     );
 
