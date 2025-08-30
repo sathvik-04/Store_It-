@@ -1,7 +1,7 @@
 <div align="center">
   <br />
     <a  target="_blank">
-      <img src="public/readme/hero.png" alt="Project Banner">
+      
     </a>
   <br />
 
