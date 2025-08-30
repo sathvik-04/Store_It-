@@ -13,7 +13,7 @@ const getUserByEmail = async (email: string) => {
 
   const result = await databases.listDocuments(
     appwriteConfig.databaseId,
-    appwriteConfig.usersCollectionId,
+    appwriteConfig.usersTableId,
     [Query.equal("email", [email])],
   );
 
@@ -54,7 +54,7 @@ export const createAccount = async ({
 
     await databases.createDocument(
       appwriteConfig.databaseId,
-      appwriteConfig.usersCollectionId,
+      appwriteConfig.usersTableId,
       ID.unique(),
       {
         fullName,
@@ -101,7 +101,7 @@ export const getCurrentUser = async () => {
 
     const user = await databases.listDocuments(
       appwriteConfig.databaseId,
-      appwriteConfig.usersCollectionId,
+      appwriteConfig.usersTableId,
       [Query.equal("accountId", result.$id)],
     );
 
