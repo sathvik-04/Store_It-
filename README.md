@@ -1,8 +1,6 @@
 <div align="center">
   <br />
-    <a  target="_blank">
-      
-    </a>
+   
   <br />
 
   <div>
